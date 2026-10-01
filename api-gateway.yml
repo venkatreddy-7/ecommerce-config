@@ -30,7 +30,10 @@ spring:
 
       routes:
 
+        # =========================================================
         # Auth Service
+        # =========================================================
+
         - id: auth-service
 
           uri: lb://AUTH-SERVICE
@@ -39,7 +42,10 @@ spring:
             - Path=/api/v1/auth/**
 
 
+        # =========================================================
         # Auth Service Swagger
+        # =========================================================
+
         - id: auth-service-docs
 
           uri: lb://AUTH-SERVICE
@@ -48,10 +54,13 @@ spring:
             - Path=/auth-service/v3/api-docs, /auth-service/v3/api-docs/**
 
           filters:
-            - RewritePath=/auth-service/(?<remaining>.*), /${remaining}
+            - RewritePath=/auth-service/(?<remaining>.*), /$\{remaining}
 
 
+        # =========================================================
         # Product Service
+        # =========================================================
+
         - id: product-service
 
           uri: lb://PRODUCT-SERVICE
@@ -60,7 +69,10 @@ spring:
             - Path=/api/v1/products/**
 
 
+        # =========================================================
         # Product Service Swagger
+        # =========================================================
+
         - id: product-service-docs
 
           uri: lb://PRODUCT-SERVICE
@@ -69,8 +81,12 @@ spring:
             - Path=/product-service/v3/api-docs, /product-service/v3/api-docs/**
 
           filters:
-            - RewritePath=/product-service/(?<remaining>.*), /${remaining}
+            - RewritePath=/product-service/(?<remaining>.*), /$\{remaining}
 
+
+# ===============================================================
+# Swagger UI
+# ===============================================================
 
 springdoc:
 
@@ -86,6 +102,10 @@ springdoc:
       - name: Product Service
         url: /product-service/v3/api-docs
 
+
+# ===============================================================
+# Eureka
+# ===============================================================
 
 eureka:
 
