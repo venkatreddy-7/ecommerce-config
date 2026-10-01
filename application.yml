@@ -7,3 +7,4 @@ management:
           - info
           - metrics
           - prometheus
+          - gateway
