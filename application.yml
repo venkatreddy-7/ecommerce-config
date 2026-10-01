@@ -8,3 +8,7 @@ management:
           - metrics
           - prometheus
           - gateway
+
+  endpoint:
+    gateway:
+      enabled: true
